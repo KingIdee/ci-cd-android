@@ -7,9 +7,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-open class APIClient {
+object APIClient {
 
     private lateinit var retrofit: Retrofit
+    private const val BASE_URL = "https://api.themoviedb.org/"
+
 
     val client: Retrofit
         get() {
@@ -36,11 +38,6 @@ open class APIClient {
             }
             return retrofit
         }
-
-    companion object {
-        private const val BASE_URL = "https://api.themoviedb.org/"
-    }
-
 
 
 }
