@@ -1,7 +1,6 @@
 package dev.idee.cicdandroid
 
 import android.util.Log
-import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import retrofit2.Call
@@ -19,7 +18,7 @@ open class MainActivityViewModel : ViewModel() {
 
     private fun fetchMovies() {
 
-        APIClient().client.create(ApiInterface::class.java).getPopularMovies(BuildConfig.API_KEY)
+        APIClient.client.create(ApiInterface::class.java).getPopularMovies(BuildConfig.API_KEY)
             .enqueue(object : Callback<MovieResponse> {
                 override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
                     Log.e("MainActivityViewModel", t.toString())
