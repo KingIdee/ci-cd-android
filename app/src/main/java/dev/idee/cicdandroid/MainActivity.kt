@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupViewModel() {
         viewModel = ViewModelProviders.of(this)[MainActivityViewModel::class.java]
-        viewModel.movieListLiveData.observe(this, Observer {
+        viewModel.getMovieLiveData().observe(this, Observer {
             progressBar.visibility = View.GONE
             movieAdapter.submitList(it)
         })

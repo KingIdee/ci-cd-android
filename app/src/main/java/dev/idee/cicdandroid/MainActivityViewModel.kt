@@ -10,7 +10,15 @@ import retrofit2.Response
 
 open class MainActivityViewModel : ViewModel() {
 
-    val movieListLiveData = MutableLiveData<List<MovieModel>>()
+    private val movieListLiveData = MutableLiveData<List<MovieModel>>()
+
+    open fun getMovieLiveData(): MutableLiveData<List<MovieModel>> {
+        return movieListLiveData
+    }
+
+    fun setMovieLiveData(movieModelList: List<MovieModel>) {
+        movieListLiveData.value = movieModelList
+    }
 
     init {
         fetchMovies()
@@ -31,7 +39,7 @@ open class MainActivityViewModel : ViewModel() {
 
                     response.body()?.let {
                         Log.d("MainActivityViewModel","$it")
-                        movieListLiveData.postValue(it.movieModelList)
+                        setMovieLiveData(it.movieModelList)
                     }
 
                 }
