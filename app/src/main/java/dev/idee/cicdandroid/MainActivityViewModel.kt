@@ -24,7 +24,6 @@ open class MainActivityViewModel : ViewModel() {
         fetchMovies()
     }
 
-
     private fun fetchMovies() {
 
         APIClient.client.create(ApiInterface::class.java).getPopularMovies(BuildConfig.API_KEY)
